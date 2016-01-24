@@ -1,0 +1,33 @@
+{
+  "name": "simple-server",
+  "version": "0.1.0",
+  "description": "Basic express server with plumbing in place, ready to use for application development.",
+  "main": "./src/simple-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "server",
+    "framework"
+  ],
+  "author": "Andrew Ramsay",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "joi": "^7.2.2",
+    "jwt-simple": "^0.4.1",
+    "lodash": "^4.0.0",
+    "moment": "^2.11.1",
+    "mongoose": "^4.3.7",
+    "mustbe": "^0.4.0",
+    "passport": "^0.3.2",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}
