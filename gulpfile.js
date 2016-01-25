@@ -9,3 +9,15 @@ let simpleBuild = new SimpleBuild({
 }, gulp);
 
 simpleBuild.taskGroups.lint(simpleBuild);
+
+
+
+const gulpMocha = require('gulp-mocha');
+gulp.task('test', function () {
+  return gulp.src('./src/**/*.spec.js', { read: false })
+    .pipe(gulpMocha({ reporter: 'spec' }));
+});
+
+gulp.task('test:watch', ['test'], function () {
+  gulp.watch('./src/**/*.js', ['test']);
+});

@@ -53,3 +53,13 @@ you use to set up other dependencies, or it can be a simple object literal with 
 # Options
 
 TBD
+
+# Authentication
+
+A basic authentication system is in place.  This supports 3 authentication strategies pre configured to work with the users in the database.
+* 'local' - Looks for a username/password in the request body.  It will verify the credentials against the database. (used internally for obtaining an auth token).
+* 'token' - Looks for an 'Authorization: Bearer SOME_JWT_TOKEN' header in the request.  It validates the token and finds the user identified in the payload.
+* 'anonymous' - Allows access without any successful authentication.
+
+All routes should specify the `authenticate()` middleware, and explicitly state if they allow anonymous access.  There is a custom eslint rule `require-authenticate` enabled by default
+to assist in catching routes missing an `authenticate()` call.
