@@ -17,6 +17,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.2",
     "express": "^4.13.4",
+    "http-status-codes": "^1.0.5",
     "joi": "^7.2.2",
     "jwt-simple": "^0.4.1",
     "lodash": "^4.0.0",
@@ -24,10 +25,14 @@
     "mongoose": "^4.3.7",
     "mustbe": "^0.4.0",
     "passport": "^0.3.2",
+    "passport-anonymous": "^1.0.1",
     "passport-http-bearer": "^1.0.1",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "chai": "^3.4.1",
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.2.0",
+    "sinon": "^1.17.2"
   }
 }
