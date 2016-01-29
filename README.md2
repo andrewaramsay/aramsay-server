@@ -1,4 +1,4 @@
-# Simple Server
+# ARamsay Server
 This is a simple express server with no routes configured*.  The idea is that it can be dropped into a MEAN project, and all the
 boilerplate of getting the server started will be taken care of.  You begin coding with adding routes to an express router, and
 focusing your development time on business logic rather than configuring authentication/authorization, logging, error handling,

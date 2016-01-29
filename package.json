@@ -1,5 +1,5 @@
 {
-  "name": "simple-server",
+  "name": "aramsay-server",
   "version": "0.1.0",
   "description": "Basic express server with plumbing in place, ready to use for application development.",
   "main": "./src/index.js",
