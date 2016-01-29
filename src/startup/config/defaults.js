@@ -1,5 +1,5 @@
 'use strict';
-require('../lodash-mixins');
+require('../../util/lodash-mixins')();
 
 const _ = require('lodash');
 
@@ -7,6 +7,7 @@ const ConfigurationError = require('./ConfigurationError');
 
 
 const port = 8990;
+const httpPort = 8991;
 const requestSizeLimit = '50mb';
 const sendErrorDetailsInResponse = false;
 const loginFailedSlowdownFactor = 1.5;
@@ -15,9 +16,12 @@ const failedAttemptsWhenUserNotFound = 3;
 const noAuthSystem = false;
 const localTokenSecret = 'secret';
 const tokenDurationInSeconds = 3600;
+const saltIterations = 10;
+const inaccessibleRedirectUrls = ['/api', '/auth'];
 
 let defaults = {
   port,
+  httpPort,
   requestSizeLimit,
   sendErrorDetailsInResponse,
   mongoConnectionString: noDefault('mongoConnectionString'),
@@ -26,7 +30,12 @@ let defaults = {
   failedAttemptsWhenUserNotFound,
   noAuthSystem,
   localTokenSecret,
-  tokenDurationInSeconds
+  tokenDurationInSeconds,
+  saltIterations,
+  sslPrivateKey: noDefault('sslPrivateKey'),
+  sslCertificate: noDefault('sslCertificate'),
+  sslPrivateKeyPassphrase: noDefault('sslPrivateKeyPassphrase'),
+  inaccessibleRedirectUrls
 };
 
 defaults.applyDefaults = function applyDefaults(config) {

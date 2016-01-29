@@ -1,5 +1,5 @@
 'use strict';
-require('../reflect.shim');
+require('./reflect.shim.js');
 
 function callMethod(factory, methodName) {
   return function () {

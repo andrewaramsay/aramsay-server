@@ -1,11 +1,12 @@
 'use strict';
 // poor man's IoC, hard coded factories for creating each class in the system.
 
-
 const AuthController = require('../api/AuthController');
 const AuthenticationService = require('../business/AuthenticationService');
+const ActivitiesRegistry = require('../business/security/ActivitiesRegistry');
 const UsersService = require('../business/UsersService');
-const UsersRepository = require('../data/UsersRepository');
+const UsersRepository = require('../data/repositories/UsersRepository');
+const DatabaseExecutor = require('../data/DatabaseExecutor');
 
 
 class Resolver {
@@ -16,6 +17,9 @@ class Resolver {
   }
 
   _createSingletonInstances() {
+    const self = this;
+    self.databaseExecutor = new DatabaseExecutor();
+    self.activitiesRegistry = new ActivitiesRegistry();
     // Instantiate anything that should be a singleton here and then just return it from the resolve function
   }
 
@@ -24,17 +28,29 @@ class Resolver {
     return new AuthController(self.resolveAuthenticationService());
   }
 
+  resolveActivitiesRegistry() {
+    const self = this;
+    return self.activitiesRegistry;
+  }
+
   resolveAuthenticationService() {
     const self = this;
     return new AuthenticationService(self.options, self.resolveUsersRepository());
   }
 
   resolveUsersService() {
-    return new UsersService();
+    const self = this;
+    return new UsersService(self.options, self.resolveUsersRepository());
   }
 
   resolveUsersRepository() {
-    return new UsersRepository();
+    const self = this;
+    return new UsersRepository(self.resolveDatabaseExecutor());
+  }
+
+  resolveDatabaseExecutor() {
+    const self = this;
+    return self.databaseExecutor;
   }
 }
 

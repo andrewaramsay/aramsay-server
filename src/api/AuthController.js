@@ -1,6 +1,6 @@
 'use strict';
 
-const callMethod = require('../core/callMethod');
+const callMethod = require('../util/callMethod');
 
 class AuthController {
   static configureRoutes(router, middlewares, controllerFactory) {

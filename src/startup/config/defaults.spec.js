@@ -27,6 +27,20 @@ describe('defaults', function () {
     });
   });
 
+  describe('httpPort', function () {
+    it('uses default when missing', function () {
+      let options = defaults.applyDefaults(config);
+      expect(options.httpPort()).to.equal(defaults.httpPort);
+    });
+
+    it('uses existing when specified', function () {
+      const MY_PORT = 9999;
+      config.httpPort = MY_PORT;
+      let options = defaults.applyDefaults(config);
+      expect(options.httpPort()).to.equal(MY_PORT);
+    });
+  });
+
   describe('requestSizeLimit', function () {
     it('uses default when missing', function () {
       let options = defaults.applyDefaults(config);
@@ -158,6 +172,77 @@ describe('defaults', function () {
       config.tokenDurationInSeconds = TOKEN_DURATION;
       let options = defaults.applyDefaults(config);
       expect(options.tokenDurationInSeconds()).to.equal(TOKEN_DURATION);
+    });
+  });
+  
+  describe('saltIterations', function () {
+    it('uses default when missing', function () {
+      let options = defaults.applyDefaults(config);
+      expect(options.saltIterations()).to.equal(defaults.saltIterations);
+    });
+
+    it('uses existing when specified', function () {
+      const SALT_ITERATIONS = 500;
+      config.saltIterations = SALT_ITERATIONS;
+      let options = defaults.applyDefaults(config);
+      expect(options.saltIterations()).to.equal(SALT_ITERATIONS);
+    });
+  });
+
+
+  describe('sslPrivateKey', function () {
+    it('throws an exception if not specified', function () {
+      let options = defaults.applyDefaults(config);
+      expect(() => options.sslPrivateKey()).to.throw(ConfigurationError, 'sslPrivateKey must be specified on the SimpleServer configuration object.');
+    });
+
+    it('uses existing when specified', function () {
+      const PRIVATE_KEY = 'some private key';
+      config.sslPrivateKey = PRIVATE_KEY;
+      let options = defaults.applyDefaults(config);
+      expect(options.sslPrivateKey()).to.equal(PRIVATE_KEY);
+    });
+  });
+
+  describe('sslCertificate', function () {
+    it('throws an exception if not specified', function () {
+      let options = defaults.applyDefaults(config);
+      expect(() => options.sslCertificate()).to.throw(ConfigurationError, 'sslCertificate must be specified on the SimpleServer configuration object.');
+    });
+
+    it('uses existing when specified', function () {
+      const CERTIFICATE = 'some cert';
+      config.sslCertificate = CERTIFICATE;
+      let options = defaults.applyDefaults(config);
+      expect(options.sslCertificate()).to.equal(CERTIFICATE);
+    });
+  });
+
+  describe('sslPrivateKeyPassphrase', function () {
+    it('throws an exception if not specified', function () {
+      let options = defaults.applyDefaults(config);
+      expect(() => options.sslPrivateKeyPassphrase()).to.throw(ConfigurationError, 'sslPrivateKeyPassphrase must be specified on the SimpleServer configuration object.');
+    });
+
+    it('uses existing when specified', function () {
+      const PASSPHRASE = 'some passphrase';
+      config.sslPrivateKeyPassphrase = PASSPHRASE;
+      let options = defaults.applyDefaults(config);
+      expect(options.sslPrivateKeyPassphrase()).to.equal(PASSPHRASE);
+    });
+  });
+
+  describe('inaccessibleRedirectUrls', function () {
+    it('uses default when missing', function () {
+      let options = defaults.applyDefaults(config);
+      expect(options.inaccessibleRedirectUrls()).to.equal(defaults.inaccessibleRedirectUrls);
+    });
+
+    it('uses existing when specified', function () {
+      const URLS = ['a', 'b'];
+      config.inaccessibleRedirectUrls = URLS;
+      let options = defaults.applyDefaults(config);
+      expect(options.inaccessibleRedirectUrls()).to.equal(URLS);
     });
   });
 });
