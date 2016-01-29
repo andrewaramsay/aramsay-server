@@ -2,8 +2,8 @@
 
 module.exports = {
   extends: [
-    './node_modules/simple-build/lint/common.js',
-    './node_modules/simple-build/lint/server.js'
+    './node_modules/aramsay-build/lint/common.js',
+    './node_modules/aramsay-build/lint/server.js'
   ],
   root: true
 };

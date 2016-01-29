@@ -33,6 +33,7 @@
     "yargs": "^3.32.0"
   },
   "devDependencies": {
+    "aramsay-build": "^0.1.0",
     "chai": "^3.4.1",
     "gulp": "^3.9.0",
     "gulp-mocha": "^2.2.0",

@@ -132,7 +132,7 @@ class SimpleServer {
     const self = this;
 
     let httpsServer = new HttpsServer(self._app, self.options);
-    let httpRedirectServer = new HttpRedirectServer(self._app, self.options);
+    let httpRedirectServer = new HttpRedirectServer(self.options);
     async.parallel([
       cb => httpsServer.start(cb),
       cb => httpRedirectServer.start(cb)
