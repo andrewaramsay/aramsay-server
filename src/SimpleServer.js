@@ -22,6 +22,7 @@ const configureMongoose = require('./startup/configureMongoose');
 const configureMustbe = require('./startup/configureMustbe');
 const configurePassport = require('./startup/configurePassport');
 const configureRoutes = require('./startup/configureRoutes');
+const configureStatic = require('./startup/configureStatic');
 
 class SimpleServer {
   constructor(options) {
@@ -52,6 +53,16 @@ class SimpleServer {
     self._routeConfig = routeConfig;
   }
 
+  configureStatic(path) {
+    const self = this;
+    if (self._started) {
+      throw new Error('Cannot configure static after SimpleServer has been started.');
+    }
+
+    self._statics = self._statics || [];
+    self._statics.push(path);
+  }
+
   configureActivities(activitiesConfig) {
     const self = this;
     if (self._started) {
@@ -69,6 +80,7 @@ class SimpleServer {
     self._configurePassport();
     self._configureMustbe();
     self._configureRoutes();
+    self._configureStatic();
     self._configureAuthRoutes();
     self._configureErrorHandlers();
 
@@ -112,6 +124,11 @@ class SimpleServer {
   _configureRoutes() {
     const self = this;
     configureRoutes(self);
+  }
+
+  _configureStatic() {
+    const self = this;
+    configureStatic(self);
   }
 
   _configureAuthRoutes() {
