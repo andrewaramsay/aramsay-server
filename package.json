@@ -1,6 +1,6 @@
 {
   "name": "aramsay-server",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Basic express server with plumbing in place, ready to use for application development.",
   "main": "./src/index.js",
   "scripts": {
@@ -37,7 +37,6 @@
     "chai": "^3.4.1",
     "gulp": "^3.9.0",
     "gulp-mocha": "^2.2.0",
-    "aramsay-build": "^0.1.0",
     "sinon": "^1.17.2"
   }
 }
