@@ -9,11 +9,7 @@ const HttpServer = require('./HttpServer');
 class HttpRedirectServer extends HttpServer {
   constructor(config) {
     let app = express();
-    super(app, config.httpPort());
-    const self = this;
-
-    self._app = app;
-    self._config = config;
+    super(app, config, config.httpPort());
   }
 
   _init() {

@@ -37,7 +37,7 @@
     "chai": "^3.4.1",
     "gulp": "^3.9.0",
     "gulp-mocha": "^2.2.0",
-    "simple-build": "^1.0.1",
+    "aramsay-build": "^0.1.0",
     "sinon": "^1.17.2"
   }
 }

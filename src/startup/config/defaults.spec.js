@@ -174,7 +174,7 @@ describe('defaults', function () {
       expect(options.tokenDurationInSeconds()).to.equal(TOKEN_DURATION);
     });
   });
-  
+
   describe('saltIterations', function () {
     it('uses default when missing', function () {
       let options = defaults.applyDefaults(config);

@@ -8,7 +8,6 @@ const Router = require('express').Router;
 const passport = require('passport');
 const mustbe = require('mustbe');
 
-const HttpServer = require('./startup/hosting/HttpServer');
 const HttpsServer = require('./startup/hosting/HttpsServer');
 const HttpRedirectServer = require('./startup/hosting/HttpRedirectServer');
 const defaults = require('./startup/config/defaults');

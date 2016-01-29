@@ -1,7 +1,7 @@
 'use strict';
 
-const gulp = require(`gulp`);
-const SimpleBuild = require(`simple-build`);
+const gulp = require('gulp');
+const SimpleBuild = require('aramsay-build');
 const Logger = SimpleBuild.Logger;
 
 let simpleBuild = new SimpleBuild({

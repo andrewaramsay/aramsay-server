@@ -9,9 +9,7 @@ const HttpServer = require('./HttpServer');
 
 class HttpsServer extends HttpServer {
   constructor(app, config) {
-    super(app, config.port());
-    const self = this;
-    self._config = config;
+    super(app, config, config.port());
   }
 
   _init() {
@@ -19,8 +17,8 @@ class HttpsServer extends HttpServer {
 
     self._serverPromise = new Q.Promise(function (resolve, reject) {
       async.parallel({
-        privateKey: cb => fs.readFile(self.config.sslPrivateKey(), 'utf8', cb),
-        certificate: cb => fs.readFile(self.config.sslCertificate(), 'utf8', cb)
+        privateKey: cb => fs.readFile(self._config.sslPrivateKey(), 'utf8', cb),
+        certificate: cb => fs.readFile(self._config.sslCertificate(), 'utf8', cb)
       }, function (err, results) {
         if (err) {
           return reject(err);

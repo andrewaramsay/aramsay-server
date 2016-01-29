@@ -3,9 +3,10 @@
 const http = require('http');
 
 class HttpServer {
-  constructor(app, port) {
+  constructor(app, config, port) {
     const self = this;
     self._app = app;
+    self._config = config;
     self._port = port;
     self._init();
   }
