@@ -11,7 +11,7 @@ const mustbe = require('mustbe');
 const HttpsServer = require('./startup/hosting/HttpsServer');
 const HttpRedirectServer = require('./startup/hosting/HttpRedirectServer');
 const defaults = require('./startup/config/defaults');
-const Resolver = require('./util/Resolver');
+const Resolver = require('./util/resolver');
 
 const createUser = require('./cli/createUser');
 
