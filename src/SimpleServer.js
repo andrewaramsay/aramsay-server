@@ -147,12 +147,13 @@ class SimpleServer {
   _startServers(callback) {
     const self = this;
 
-    let httpsServer = new HttpsServer(self._app, self.options);
-    let httpRedirectServer = new HttpRedirectServer(self.options);
-    async.parallel([
-      cb => httpsServer.start(cb),
-      cb => httpRedirectServer.start(cb)
-    ], _.ensureFunction(callback));
+    //let httpsServer = new HttpsServer(self._app, self.options);
+    //let httpRedirectServer = new HttpRedirectServer(self.options);
+    //async.parallel([
+    //  cb => httpsServer.start(cb),
+    //  cb => httpRedirectServer.start(cb)
+    //], _.ensureFunction(callback));
+    self._app.listen(self.options.port(), _.ensureFunction(callback));
   }
 
   _addAvailableMiddleware(name, parent, parentName) {
