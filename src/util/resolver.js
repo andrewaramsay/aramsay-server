@@ -25,7 +25,7 @@ class Resolver {
 
   resolveAuthController() {
     const self = this;
-    return new AuthController(self.resolveAuthenticationService());
+    return new AuthController(self.options, self.resolveAuthenticationService());
   }
 
   resolveActivitiesRegistry() {

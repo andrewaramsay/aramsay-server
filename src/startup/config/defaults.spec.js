@@ -73,6 +73,25 @@ describe('defaults', function () {
     });
   });
 
+  describe('allowCookies', function () {
+    it('uses default when missing', function () {
+      let options = defaults.applyDefaults(config);
+      expect(options.allowCookies()).to.equal(defaults.allowCookies);
+    });
+
+    it('uses existing when specified as true', function () {
+      config.allowCookies = true;
+      let options = defaults.applyDefaults(config);
+      expect(options.allowCookies()).to.equal(true);
+    });
+
+    it('uses existing when specified as false', function () {
+      config.allowCookies = false;
+      let options = defaults.applyDefaults(config);
+      expect(options.allowCookies()).to.equal(false);
+    });
+  });
+
   describe('noAuthSystem', function () {
     it('uses default when missing', function () {
       let options = defaults.applyDefaults(config);

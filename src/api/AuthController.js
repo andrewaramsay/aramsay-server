@@ -1,5 +1,7 @@
 'use strict';
 
+const moment = require('moment');
+
 const callMethod = require('../util/callMethod');
 
 class AuthController {
@@ -10,8 +12,9 @@ class AuthController {
     router.get('/auth/permissions', authenticate('token'), callMethod(controllerFactory, 'getPermissions'));
   }
 
-  constructor(authenticationService) {
+  constructor(options, authenticationService) {
     const self = this;
+    self._options = options;
     self._authenticationService = authenticationService;
   }
 
@@ -35,6 +38,13 @@ class AuthController {
     let response = self._authenticationService.createToken(req.hostname, req.user.id);
     let token = response.token;
     let exp = response.exp;
+    if (self._options.allowCookies()) {
+      res.cookie('bearerToken', token, {
+        httpOnly: true,
+        secure: true,
+        expires: moment.unix(exp).toDate()
+      });
+    }
     res.json({ token, exp });
   }
 }
