@@ -37,6 +37,7 @@ class SimpleServer {
   _initDependencies() {
     const self = this;
     let resolver = new Resolver(self.options);
+    self.resolver = resolver;
 
     self._activitiesRegistry = resolver.resolveActivitiesRegistry();
     self._authenticationService = resolver.resolveAuthenticationService();

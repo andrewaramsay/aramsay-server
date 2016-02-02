@@ -92,6 +92,25 @@ describe('defaults', function () {
     });
   });
 
+  describe('requireSecureAuthCookie', function () {
+    it('uses default when missing', function () {
+      let options = defaults.applyDefaults(config);
+      expect(options.requireSecureAuthCookie()).to.equal(defaults.requireSecureAuthCookie);
+    });
+
+    it('uses existing when specified as true', function () {
+      config.requireSecureAuthCookie = true;
+      let options = defaults.applyDefaults(config);
+      expect(options.requireSecureAuthCookie()).to.equal(true);
+    });
+
+    it('uses existing when specified as false', function () {
+      config.requireSecureAuthCookie = false;
+      let options = defaults.applyDefaults(config);
+      expect(options.requireSecureAuthCookie()).to.equal(false);
+    });
+  });
+
   describe('noAuthSystem', function () {
     it('uses default when missing', function () {
       let options = defaults.applyDefaults(config);

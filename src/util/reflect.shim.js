@@ -9,3 +9,7 @@ global.Reflect = global.Reflect || {};
 global.Reflect.apply = global.Reflect.apply || function (func, instance, args) {
   return Function.prototype.apply.call(func, instance, args);
 };
+
+global.Reflect.deleteProperty = global.Reflect.deleteProperty || function (target, propertyKey) {
+  delete target[propertyKey];
+};

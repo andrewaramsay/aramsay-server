@@ -19,6 +19,7 @@ const tokenDurationInSeconds = 3600;
 const saltIterations = 10;
 const inaccessibleRedirectUrls = ['/api', '/auth'];
 const allowCookies = false;
+const requireSecureAuthCookie = true;
 
 let defaults = {
   port,
@@ -37,7 +38,8 @@ let defaults = {
   sslCertificate: noDefault('sslCertificate'),
   sslPrivateKeyPassphrase: noDefault('sslPrivateKeyPassphrase'),
   inaccessibleRedirectUrls,
-  allowCookies
+  allowCookies,
+  requireSecureAuthCookie
 };
 
 defaults.applyDefaults = function applyDefaults(config) {
