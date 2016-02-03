@@ -117,7 +117,7 @@ class SimpleServer {
 
   _configureMustbe() {
     const self = this;
-    configureMustbe(self._activitiesRegistry.allActivities, self._activitiesRegistry.overrideRole);
+    configureMustbe(self._activitiesRegistry.allActivities);
 
     self._addAvailableMiddleware('authorized', mustbe.routeHelpers());
   }

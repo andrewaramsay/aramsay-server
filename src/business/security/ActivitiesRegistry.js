@@ -1,15 +1,9 @@
 'use strict';
 
-const OVERRIDE_ROLE = 'systemAdmin';
-
 class ActivitiesRegistry {
   constructor() {
     const self = this;
     self.allActivities = [];
-  }
-
-  get overrideRole() {
-    return OVERRIDE_ROLE;
   }
 
   registerActivity(activity) {

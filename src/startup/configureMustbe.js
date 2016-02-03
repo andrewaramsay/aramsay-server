@@ -5,7 +5,7 @@ const HttpStatus = require('http-status-codes');
 const mustbe = require('mustbe');
 
 
-function configureMustbe(allActivities, overrideRole) {
+function configureMustbe(allActivities) {
   mustbe.configure(function (config) {
     config.routeHelpers(function (routeHelpers) {
       routeHelpers.getUser(_getUser);
@@ -35,7 +35,7 @@ function configureMustbe(allActivities, overrideRole) {
   }
 
   function _globalAllowRules(identity, activity, callback) {
-    let allowed = _.some(identity.user.roles, role => role._id === overrideRole);
+    let allowed = _.some(identity.user.roles, role => role.securityOverride === true);
     callback(null, allowed);
   }
 

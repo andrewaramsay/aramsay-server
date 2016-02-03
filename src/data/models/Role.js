@@ -7,6 +7,7 @@ let RoleSchema = new Schema({
   _id: { type: String },
   displayName: { type: String },
   description: { type: String },
+  securityOverride: { type: Boolean },
   permissions: [{
     name: { type: String },
     allow: { type: Boolean }
