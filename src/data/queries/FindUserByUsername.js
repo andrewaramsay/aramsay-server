@@ -19,7 +19,7 @@ class FindUserByUsername {
   get condition() {
     const self = this;
     return {
-      username: self.username
+      username: self.username.toLowerCase()
     };
   }
 }
