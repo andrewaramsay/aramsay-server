@@ -10,21 +10,6 @@ function ensureFunction(possibleFunction) {
   return () => possibleFunction;
 }
 
-let mixinsApplied = false;
-
-function applyMixins(lodash) {
-  if (mixinsApplied && !lodash) {
-    return;
-  }
-
-  lodash = lodash || _;
-
-  mixinsApplied = true;
-
-
-  lodash.mixin({
-    ensureFunction
-  });
-}
-
-module.exports = applyMixins;
+_.mixin({
+  ensureFunction
+});

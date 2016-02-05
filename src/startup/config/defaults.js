@@ -1,5 +1,5 @@
 'use strict';
-require('../../util/lodash-mixins')();
+require('../../util/lodash-mixins');
 
 const _ = require('lodash');
 

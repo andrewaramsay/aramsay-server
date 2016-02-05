@@ -1,5 +1,4 @@
 'use strict';
-require('./util/lodash-mixins')();
 
 const _ = require('lodash');
 const async = require('async');
