@@ -28,6 +28,11 @@ class DatabaseExecutor {
     model.save((err, rec) => callback(err, rec && rec.id));
   }
 
+  updateRecordById(query, callback) {
+    let Model = query.model;
+    Model.findByIdAndUpdate(query.id, query.options, callback);
+  }
+
   deleteRecords(query, callback) {
     let Model = query.model;
     Model.remove(query.condition, callback);
