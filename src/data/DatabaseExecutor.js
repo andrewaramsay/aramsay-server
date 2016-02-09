@@ -30,7 +30,7 @@ class DatabaseExecutor {
 
   updateRecordById(query, callback) {
     let Model = query.model;
-    Model.findByIdAndUpdate(query.id, query.options, callback);
+    Model.findByIdAndUpdate(query.id, query.data, query.options, callback);
   }
 
   deleteRecords(query, callback) {
