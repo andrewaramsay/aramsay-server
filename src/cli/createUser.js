@@ -11,7 +11,7 @@ writes directly to the database (hashing password), so it should only be used to
 accounts, and regular user management should take place from within the application
 
 
-Usage: node createUser.js -u <USERNAME> -p <PASSWORD>`;
+Usage: node createUser.js -u <USERNAME> -p <PASSWORD> [-d <DISPLAY-NAME>]`;
 }
 
 function createUser(simpleServer) {
@@ -19,6 +19,7 @@ function createUser(simpleServer) {
     .usage(printUsage())
     .alias('p', 'password')
     .alias('u', 'username')
+    .alias('d', 'displayname')
     .demand(['username', 'password'])
     .argv;
 
@@ -29,6 +30,7 @@ function createUser(simpleServer) {
 
   let user = {
     username: args.username,
+    displayName: args.displayname || args.username,
     roles: ['systemAdmin'],
     permissions: []
   };
