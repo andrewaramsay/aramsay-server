@@ -26,6 +26,7 @@ class UsersService {
           return callback(hashErr);
         }
 
+        user.displayName = user.displayName || user.username;
         user.password = hashedPassword;
         self.usersRepository.saveUser(user, callback);
       });
