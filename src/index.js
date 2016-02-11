@@ -10,5 +10,8 @@ SimpleServer.mongoose = require('mongoose');
 SimpleServer.lodash = require('lodash');
 require('./util/lodash-mixins');
 
+SimpleServer.Models = {};
+SimpleServer.Models.UserModel = require('./data/models/User');
+SimpleServer.Models.RoleModel = require('./data/models/User');
 
 module.exports = SimpleServer;
