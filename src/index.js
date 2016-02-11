@@ -12,6 +12,6 @@ require('./util/lodash-mixins');
 
 SimpleServer.Models = {};
 SimpleServer.Models.UserModel = require('./data/models/User');
-SimpleServer.Models.RoleModel = require('./data/models/User');
+SimpleServer.Models.RoleModel = require('./data/models/Role');
 
 module.exports = SimpleServer;
