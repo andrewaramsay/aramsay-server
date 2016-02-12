@@ -14,4 +14,7 @@ SimpleServer.Models = {};
 SimpleServer.Models.UserModel = require('./data/models/User');
 SimpleServer.Models.RoleModel = require('./data/models/Role');
 
+SimpleServer.Queries = {};
+SimpleServer.Queries.FindUserById = require('./data/queries/FindUserById');
+
 module.exports = SimpleServer;
