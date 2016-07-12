@@ -3,10 +3,10 @@
 const DetailedErrorHandler = require('../util/DetailedErrorHandler');
 const SimpleErrorHandler = require('../util/SimpleErrorHandler');
 
-function configureErrorHandlers(app, options) {
+function configureErrorHandlers(app, options, loggingService) {
   let errorHandler = options.sendErrorDetailsInResponse()
-    ? new DetailedErrorHandler()
-    : new SimpleErrorHandler();
+    ? new DetailedErrorHandler(loggingService)
+    : new SimpleErrorHandler(loggingService);
 
   errorHandler.configureErrorHandler(app);
 }

@@ -17,6 +17,7 @@ const createUser = require('./cli/createUser');
 const configureAuthRoutes = require('./startup/configureAuthRoutes');
 const configureErrorHandlers = require('./startup/configureErrorHandlers');
 const configureExpress = require('./startup/configureExpress');
+const configureLogging = require('./startup/configureLogging');
 const configureMongoose = require('./startup/configureMongoose');
 const configureMustbe = require('./startup/configureMustbe');
 const configurePassport = require('./startup/configurePassport');
@@ -41,6 +42,7 @@ class SimpleServer {
     self._activitiesRegistry = resolver.resolveActivitiesRegistry();
     self._authenticationService = resolver.resolveAuthenticationService();
     self._usersService = resolver.resolveUsersService();
+    self._loggingService = resolver.resolveLoggingService();
     self._authControllerFactory = resolver.resolveAuthController.bind(resolver);
   }
 
@@ -79,6 +81,7 @@ class SimpleServer {
     self._configureMongoose();
     self._configurePassport();
     self._configureMustbe();
+    self._configureLogging();
     self._configureRoutes();
     self._configureStatic();
     self._configureAuthRoutes();
@@ -121,6 +124,12 @@ class SimpleServer {
     self._addAvailableMiddleware('authorized', mustbe.routeHelpers());
   }
 
+  _configureLogging() {
+    const self = this;
+    configureLogging(self._app);
+  }
+
+
   _configureRoutes() {
     const self = this;
     configureRoutes(self);
@@ -141,7 +150,7 @@ class SimpleServer {
 
   _configureErrorHandlers() {
     const self = this;
-    configureErrorHandlers(self._app, self.options);
+    configureErrorHandlers(self._app, self.options, self._loggingService);
   }
 
   _startServers(callback) {

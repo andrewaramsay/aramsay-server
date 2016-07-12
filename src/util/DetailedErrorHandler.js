@@ -5,6 +5,10 @@ const HttpStatus = require('http-status-codes');
 const GlobalErrorHandler = require('./GlobalErrorHandler');
 
 class DetailedErrorHandler extends GlobalErrorHandler {
+  constructor(loggingService) {
+    super(loggingService);
+  }
+
   configureErrorHandler(app) {
     super.configureErrorHandler(app);
 
