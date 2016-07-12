@@ -8,7 +8,7 @@ class GlobalErrorHandler {
 
   configureErrorHandler(app) {
     const self = this;
-    app.use(self._logErrors);
+    app.use(self._logErrors.bind(self));
   }
 
   _logErrors(err, req, res, next) {
