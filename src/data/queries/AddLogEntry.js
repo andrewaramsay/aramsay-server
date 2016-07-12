@@ -26,4 +26,4 @@ class AddLogEntry {
   }
 }
 
-module.exports = CreateUser;
+module.exports = AddLogEntry;

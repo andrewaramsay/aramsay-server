@@ -1,7 +1,7 @@
 'use strict';
 
 const CreateLogContext = require('../queries/CreateLogContext');
-const UpdateLogContext = require('../queries/UpdateLogContext');
+const AddLogEntry = require('../queries/AddLogEntry');
 
 class LoggingRepository {
   constructor(databaseExecutor) {

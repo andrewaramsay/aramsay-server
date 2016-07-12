@@ -18,4 +18,4 @@ class CreateLogContext {
   }
 }
 
-module.exports = CreateUser;
+module.exports = CreateLogContext;
