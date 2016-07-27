@@ -23,7 +23,7 @@ function configureLogging(app, loggingService) {
       }
       var body = Buffer.concat(chunks).toString('utf8');
 
-      loggingService.addLogEntry(req.loggingContextId, 'Response Complete', body, (err) => {
+      loggingService.addLogEntry(req.loggingContextId, 'Response Complete', { test: 'yes' }, (err) => {
         oldEnd.apply(res, endArgs);
       });
     };
@@ -36,7 +36,7 @@ function configureLogging(app, loggingService) {
       }
 
       req.loggingContextId = contextId;
-      loggingService.addLogEntry(contextId, 'Initial Request', req, next);
+      loggingService.addLogEntry(contextId, 'Initial Request', { test: 'yes' }, next);
     });
   }
 }
