@@ -21,6 +21,7 @@ const configureLogging = require('./startup/configureLogging');
 const configureMongoose = require('./startup/configureMongoose');
 const configureMustbe = require('./startup/configureMustbe');
 const configurePassport = require('./startup/configurePassport');
+const configureHttpRedirect = require('./startup/configureHttpRedirect');
 const configureRoutes = require('./startup/configureRoutes');
 const configureStatic = require('./startup/configureStatic');
 
@@ -82,6 +83,7 @@ class SimpleServer {
     self._configurePassport();
     self._configureMustbe();
     self._configureLogging();
+    self._configureRedirect();
     self._configureRoutes();
     self._configureStatic();
     self._configureAuthRoutes();
@@ -129,6 +131,10 @@ class SimpleServer {
     configureLogging(self._app, self._loggingService);
   }
 
+  _configureRedirect() {
+    const self = this;
+    configureHttpRedirect(self._app, self.options);
+  }
 
   _configureRoutes() {
     const self = this;
