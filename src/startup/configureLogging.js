@@ -45,6 +45,10 @@ function configureLogging(app, loggingService) {
         bodyObj = body;
       }
 
+      if (req.originalUrl.endsWith('.js') || req.originalUrl.endsWith('.css')) {
+        bodyObj = 'Source file';
+      }
+
       loggingService.addLogEntry(req.loggingContextId, 'Response Complete', bodyObj, (err) => {
         oldEnd.apply(res, endArgs);
       });
