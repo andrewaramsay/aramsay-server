@@ -9,7 +9,8 @@ let LogContextSchema = new Schema({
   endDate: { type: Date },
   entries: [{
     date: { type: Date },
-    message: { type: String }
+    message: { type: String },
+    payload: { type: Object }
   }]
 });
 

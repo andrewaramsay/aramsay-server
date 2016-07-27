@@ -3,10 +3,11 @@
 const LogContextModel = require('../models/LogContext');
 
 class AddLogEntry {
-  constructor(contextId, message, date, newEndDate) {
+  constructor(contextId, message, payload, date, newEndDate) {
     const self = this;
     self.contextId = contextId;
     self.message = message;
+    self.payload = payload;
     self.date = date;
     self.newEndDate = newEndDate;
   }
@@ -22,7 +23,7 @@ class AddLogEntry {
 
   get data() {
     const self = this;
-    return { $push: { entries: { message: self.message, date: self.date } }, endDate: self.newEndDate };
+    return { $push: { entries: { message: self.message, date: self.date, payload: self.payload } }, endDate: self.newEndDate };
   }
 }
 

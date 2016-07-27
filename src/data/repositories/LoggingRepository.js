@@ -14,9 +14,9 @@ class LoggingRepository {
     self.databaseExecutor.saveData(new CreateLogContext(logContext), callback);
   }
 
-  addLogEntry(contextId, message, date, newEndDate, callback) {
+  addLogEntry(contextId, message, payload, date, newEndDate, callback) {
     const self = this;
-    self.databaseExecutor.updateRecordById(new AddLogEntry(contextId, message, date, newEndDate), callback);
+    self.databaseExecutor.updateRecordById(new AddLogEntry(contextId, message, payload, date, newEndDate), callback);
   }
 }
 
