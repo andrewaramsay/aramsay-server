@@ -21,9 +21,16 @@ function configureLogging(app, loggingService) {
       if (chunk) {
         chunks.push(chunk);
       }
-      var body = Buffer.concat(chunks).toString('utf8');
+      let body = Buffer.concat(chunks).toString('utf8');
+      let bodyObj;
+      try {
+        bodyObj = JSON.parse(body);
+      }
+      catch {
+        bodyObj = body;
+      }
 
-      loggingService.addLogEntry(req.loggingContextId, 'Response Complete', { test: 'yes' }, (err) => {
+      loggingService.addLogEntry(req.loggingContextId, 'Response Complete', bodyObj, (err) => {
         oldEnd.apply(res, endArgs);
       });
     };
