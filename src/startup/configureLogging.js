@@ -42,8 +42,22 @@ function configureLogging(app, loggingService) {
         return next(err);
       }
 
+      let reqInfo = {
+        baseUrl: req.baseUrl,
+        body: req.body,
+        cookies: req.cookies,
+        hostname: req.hostname,
+        ip: req.ip,
+        ips: req.ips,
+        method: req.method,
+        originalUrl: req.originalUrl,
+        params: req.params,
+        path: req.path,
+        protocol: req.protocol,
+        query: req.query
+      };
       req.loggingContextId = contextId;
-      loggingService.addLogEntry(contextId, 'Initial Request', { test: 'yes' }, next);
+      loggingService.addLogEntry(contextId, 'Initial Request', reqInfo, next);
     });
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "aramsay-server",
-  "version": "0.1.27",
+  "version": "0.1.28",
   "description": "Basic express server with plumbing in place, ready to use for application development.",
   "main": "./src/index.js",
   "scripts": {
