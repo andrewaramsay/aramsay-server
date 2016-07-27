@@ -1,7 +1,9 @@
 'use strict';
 
-function configureLogging(app, loggingService) {
-  app.use(logRequests);
+function configureLogging(app, options, loggingService) {
+  if (options.enableVerboseLogging()) {
+    app.use(logRequests);
+  }
 
   function logRequests(req, res, next) {
     let logTitle = 'Request to url: ' + req.url;

@@ -283,4 +283,23 @@ describe('defaults', function () {
       expect(options.inaccessibleRedirectUrls()).to.equal(URLS);
     });
   });
+
+  describe('enableVerboseLogging', function () {
+    it('uses default when missing', function () {
+      let options = defaults.applyDefaults(config);
+      expect(options.enableVerboseLogging()).to.equal(defaults.enableVerboseLogging);
+    });
+
+    it('uses existing when specified as true', function () {
+      config.enableVerboseLogging = true;
+      let options = defaults.applyDefaults(config);
+      expect(options.enableVerboseLogging()).to.equal(true);
+    });
+
+    it('uses existing when specified as false', function () {
+      config.enableVerboseLogging = false;
+      let options = defaults.applyDefaults(config);
+      expect(options.enableVerboseLogging()).to.equal(false);
+    });
+  });
 });

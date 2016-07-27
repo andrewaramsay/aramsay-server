@@ -20,6 +20,7 @@ const saltIterations = 10;
 const inaccessibleRedirectUrls = ['/api', '/auth'];
 const allowCookies = false;
 const requireSecureAuthCookie = true;
+const enableVerboseLogging = true;
 
 let defaults = {
   port,
@@ -39,7 +40,8 @@ let defaults = {
   sslPrivateKeyPassphrase: noDefault('sslPrivateKeyPassphrase'),
   inaccessibleRedirectUrls,
   allowCookies,
-  requireSecureAuthCookie
+  requireSecureAuthCookie,
+  enableVerboseLogging
 };
 
 defaults.applyDefaults = function applyDefaults(config) {

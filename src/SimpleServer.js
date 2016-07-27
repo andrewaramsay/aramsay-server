@@ -128,7 +128,7 @@ class SimpleServer {
 
   _configureLogging() {
     const self = this;
-    configureLogging(self._app, self._loggingService);
+    configureLogging(self._app, self.options, self._loggingService);
   }
 
   _configureRedirect() {
