@@ -26,7 +26,7 @@ function configureLogging(app, loggingService) {
       try {
         bodyObj = JSON.parse(body);
       }
-      catch {
+      catch (err) {
         bodyObj = body;
       }
 
