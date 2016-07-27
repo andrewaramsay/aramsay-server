@@ -8,20 +8,35 @@ function configureLogging(app, loggingService) {
     let oldWrite = res.write;
     let oldEnd = res.end;
     let chunks = [];
+    let body = '';
+    let useBuffers = true;
 
 
     res.write = function (chunk) {
-      chunks.push(chunk);
+      if (Buffer.isBuffer(chunk)) {
+        useBuffers = true;
+        chunks.push(chunk);
+      } else {
+        useBuffers = false;
+        body += chunk;
+      }
 
       oldWrite.apply(res, arguments);
     };
 
     res.end = function (chunk) {
       let endArgs = arguments;
-      if (chunk) {
+      if (Buffer.isBuffer(chunk)) {
+        useBuffers = true;
         chunks.push(chunk);
+      } else {
+        useBuffers = false;
+        body += chunk;
       }
-      let body = Buffer.concat(chunks).toString('utf8');
+
+      if (useBuffers) {
+        body = Buffer.concat(chunks).toString('utf8');
+      }
       let bodyObj;
       try {
         bodyObj = JSON.parse(body);
