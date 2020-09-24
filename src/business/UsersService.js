@@ -1,6 +1,6 @@
 'use strict';
 
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt');
 
 class UsersService {
   constructor(options, usersRepository) {
